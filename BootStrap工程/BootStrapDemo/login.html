@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bootstrap 模板</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+      <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+
+    <div style="background: url(/img/windowsback.jpg);">
+        <!--网站标题-->
+        <div>
+            Zestful Yoghurt
+        </div>
+
+        <!--登录注册模块-->
+        <div style="border: 1px solid gray; width: 600px; border-radius: 10px;margin-left: 40%; margin-top: 15%;">
+            <!--实现对登录以及注册页面切换的导航菜单栏-->
+            <nav class="navbar navbar-inverse" role="navigation" style="width: 270px;">
+                <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">登录</a>
+                </div>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">注册</a>
+                </div>
+                </div>
+            </nav>
+
+            <center><div>
+                <div class="input-group">
+                    <span class="input-group-addon" style="width: 70px;">用户名</span>
+                    <input type="text" class="form-control" placeholder="请输入用户名">
+                </div>
+            </br>   
+                <div class="input-group">
+                    <span class="input-group-addon" style="width: 70px;">密码</span>
+                    <input type="password" class="form-control" placeholder="请输入密码">
+                </div>
+            </div>
+            <br/>
+            <!--用户身份-->
+        <div>
+            <label for="root">管理员</label>
+            <input id="root" name="role" type="radio" />
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <label for="user">用户</label>
+            <input id="user" name="role" type="radio" />
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+
+            <label for="vipuser">VIP</label>
+            <input id="vipuser" name="role" type="radio" />
+        </div>
+
+        <br/>
+        <!--提交按钮-->
+        <div class="container" style="margin-left: -285px;" >
+            <button type="button" class="btn btn-default" style="width: 125px;">
+                取消
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary" style="width: 125px;">
+                登录
+            </button>
+        </div>
+    </div></center>
+
+        </div>
+
+        
+    
+
+    
+
+
+    
+
+      <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+ 
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () { 
+        $("[data-toggle='popover']").popover();
+    });
+    </script>
+   </body>
+</html>
