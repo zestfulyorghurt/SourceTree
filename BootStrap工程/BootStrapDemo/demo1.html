@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bootstrap 模板</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+      <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid"> 
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">菜鸟教程</a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">iOS</a></li>
+                <li><a href="#">SVN</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Java <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">jmeter</a></li>
+                        <li><a href="#">EJB</a></li>
+                        <li><a href="#">Jasper Report</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">分离的链接</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">另一个分离的链接</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">菜鸟教程</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">iOS</a></li>
+                <li><a href="#">SVN</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Java
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">jmeter</a></li>
+                        <li><a href="#">EJB</a></li>
+                        <li><a href="#">Jasper Report</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">分离的链接</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">另一个分离的链接</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">菜鸟教程</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">iOS</a></li>
+                <li><a href="#">SVN</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Java <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">jmeter</a></li>
+                        <li><a href="#">EJB</a></li>
+                        <li><a href="#">Jasper Report</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">分离的链接</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">另一个分离的链接</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    
+<ul class="pagination">
+	<li><a href="#">&laquo;</a></li>
+	<li><a href="#">1</a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">4</a></li>
+	<li><a href="#">5</a></li>
+	<li><a href="#">&raquo;</a></li>
+</ul>
+
+
+<div class="alert alert-success">成功！很好地完成了提交。</div>
+<div class="alert alert-info">信息！请注意这个信息。</div>
+<div class="alert alert-warning">警告！请不要提交。</div>
+<div class="alert alert-danger">错误！请进行一些更改。</div>
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">面板标题</h3>
+	</div>
+	<div class="panel-body">
+		这是一个基本的面板
+	</div>
+	<table class="table">
+		<th>产品</th><th>价格 </th>
+		<tr><td>产品 A</td><td>200</td></tr>
+		<tr><td>产品 B</td><td>400</td></tr>
+	</table>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">面板标题</div>
+	<table class="table">
+		<th>产品</th><th>价格 </th>
+		<tr><td>产品 A</td><td>200</td></tr>
+		<tr><td>产品 B</td><td>400</td></tr>
+	</table>
+</div>
+
+<h2>创建模态框（Modal）</h2>
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	开始演示模态框
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					模态框（Modal）标题
+				</h4>
+			</div>
+			<div class="modal-body">
+				在这里添加一些文本
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+
+<nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+	<div class="container-fluid"> 
+		<div class="navbar-header">
+			<button class="navbar-toggle" type="button" data-toggle="collapse" 
+					data-target=".bs-js-navbar-scrollspy">
+				<span class="sr-only">切换导航</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">教程名称</a>
+		</div>
+		<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+			<ul class="nav navbar-nav">
+				<li><a href="#ios">iOS</a></li>
+				<li><a href="#svn">SVN</a></li>
+				<li class="dropdown">
+					<a href="#" id="navbarDrop1" class="dropdown-toggle" 
+					   data-toggle="dropdown">Java
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu" role="menu" 
+						aria-labelledby="navbarDrop1">
+						<li><a href="#jmeter" tabindex="-1">jmeter</a></li>
+						<li><a href="#ejb" tabindex="-1">ejb</a></li>
+						<li class="divider"></li>
+						<li><a href="#spring" tabindex="-1">spring</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div> 
+</nav>
+
+
+<div class="container" style="padding: 100px 50px 10px;" >
+	<button type="button" class="btn btn-default" title="Popover title"  
+			data-container="body" data-toggle="popover" data-placement="left" 
+			data-content="左侧的 Popover 中的一些内容">
+		左侧的 Popover
+	</button>
+	<button type="button" class="btn btn-primary" title="Popover title"  
+			data-container="body" data-toggle="popover" data-placement="top" 
+			data-content="顶部的 Popover 中的一些内容">
+		顶部的 Popover
+	</button>
+	<button type="button" class="btn btn-success" title="Popover title"  
+			data-container="body" data-toggle="popover" data-placement="bottom" 
+			data-content="底部的 Popover 中的一些内容">
+		底部的 Popover
+	</button>
+	<button type="button" class="btn btn-warning" title="Popover title"  
+			data-container="body" data-toggle="popover" data-placement="right" 
+			data-content="右侧的 Popover 中的一些内容">
+		右侧的 Popover
+	</button>
+</div>
+
+<div class="btn-group">
+	<button type="button" class="btn btn-default">默认</button>
+	<button type="button" class="btn btn-default dropdown-toggle" 
+			data-toggle="dropdown">
+		<span class="caret"></span>
+		<span class="sr-only">切换下拉菜单</span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="#">功能</a></li>
+		<li><a href="#">另一个功能</a></li>
+		<li><a href="#">其他</a></li>
+		<li class="divider"></li>
+		<li><a href="#">分离的链接</a></li>
+	</ul>
+</div>
+<div class="btn-group">
+	<button type="button" class="btn btn-primary">原始</button>
+	<button type="button" class="btn btn-primary dropdown-toggle" 
+			data-toggle="dropdown">
+		<span class="caret"></span>
+		<span class="sr-only">切换下拉菜单</span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="#">功能</a></li>
+		<li><a href="#">另一个功能</a></li>
+		<li><a href="#">其他</a></li>
+		<li class="divider"></li>
+		<li><a href="#">分离的链接</a></li>
+	</ul>
+</div>
+
+
+
+<div style="padding: 100px 100px 10px;">
+	<form class="bs-example bs-example-form" role="form">
+		<div class="input-group">
+			<span class="input-group-addon">@</span>
+			<input type="text" class="form-control" placeholder="twitterhandle">
+		</div>
+		<br>
+		<div class="input-group">
+			<input type="text" class="form-control">
+			<span class="input-group-addon">.00</span>
+		</div>
+		<br>
+		<div class="input-group">
+			<span class="input-group-addon">$</span>
+			<input type="text" class="form-control">
+			<span class="input-group-addon">.00</span>
+		</div>
+	</form>
+</div>
+
+ 
+      <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+ 
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () { 
+        $("[data-toggle='popover']").popover();
+    });
+    </script>
+   </body>
+</html>
