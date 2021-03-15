@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap 4 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    .fakeimg {
+      height: 200px;
+      background: #aaa;
+    }
+  </style>
+  <script>
+    console.log(window.sessionStorage.getItem("username"))
+    var Ajax = {
+      get: function (url, callback) {
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', url, false)
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200 || xhr.status == 304) {
+              callback(xhr.responseText)
+              console.log("get方法请求成功")
+            }
+
+          }
+        }
+        xhr.send(null)
+
+      },
+      post: function (url, data, callback) {
+        var xhr = new XMLHttpRequest()
+        xhr.open('POST', url, false)
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200 || xhr.status == 304) {
+              callback(JSON.parse(xhr.responseText))
+              console.log("post方法请求成功")
+            }
+
+          }
+        }
+        xhr.send(data)
+      }
+    }
+
+    $(function () {
+      // 页面静态变化
+
+      $("#nav_shou").click(function () {
+        console.log("首页")
+        $("#order_room").css({ "display": "none" })
+        $("#room_select").css({ "display": "none" })
+        $("#first_view").css({ "display": "block" })
+        $("#fenye").css({ "display": "none" })
+        $("#order_room_select").css({ "display": "none" })
+        $("#order_cai").css({ "display": "none" })
+      })
+
+      $("#nav_order_room").click(function () {
+        console.log("订房")
+        $("#order_room").css({ "display": "block" })
+        $("#room_select").css({ "display": "block" })
+        $("#first_view").css({ "display": "none" })
+        $("#fenye").css({ "display": "none" })
+        $("#order_room_select").css({ "display": "none" })
+        $("#order_cai").css({ "display": "none" })
+      })
+
+      $("#nav_order_cai").click(function () {
+        console.log("点菜")
+        $("#order_room").css({ "display": "none" })
+        $("#room_select").css({ "display": "none" })
+        $("#first_view").css({ "display": "none" })
+        $("#fenye").css({ "display": "none" })
+        $("#order_room_select").css({ "display": "none" })
+        $("#order_cai").css({ "display": "block" })
+      })
+
+      $("#select_room").click(function () {
+        $("#room_select").css({ "display": "none" })
+        $("#fenye").css({ "display": "block" })
+        $("#order_room_select").css({ "display": "block" })
+      })
+
+      console.log(window.sessionStorage.getItem("username"))
+      console.log(6666)
+      Ajax.get('/gettest', function () {
+        console.log(window.sessionStorage.getItem("username"))
+        console.log("789")
+      })
+
+
+      Ajax.post('/getRoomByType', JSON.stringify(1), function (data) {
+        console.log(555)
+        console.log(data)
+      })
+    })
+  </script>
+  <style>
+    .divfloat {
+      float: left;
+      border: 1px solid red;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header" class="card bg-light text-dark">
+    <div style="height:20px">
+      <div id="logo"
+        style="width: 240px;height: 240px; border: red solid 1px;float: left;margin-left: 30%;margin-top: 5%;display: none;">
+        111
+      </div>
+    </div>
+    <div id="user_info" style="border: solid 1px red;width: 120px;height: 40px;margin-left: 10%;text-align: center;">
+      <span>请登录</span>
+      <svg t="1615620404471" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="4874" width="20" height="20">
+        <path
+          d="M114.2 313.1h795.5c27.5 0 49.7-22.3 49.7-49.7 0-27.5-22.3-49.7-49.7-49.7H114.2c-27.5 0-49.7 22.2-49.7 49.7 0 27.4 22.3 49.7 49.7 49.7z m795.6 149.2H114.2c-27.5 0-49.7 22.3-49.7 49.7 0 27.5 22.3 49.7 49.7 49.7h795.5c27.5 0 49.7-22.2 49.7-49.7 0.1-27.5-22.2-49.7-49.6-49.7z m0 248.6H114.2c-27.5 0-49.7 22.3-49.7 49.7 0 27.5 22.3 49.7 49.7 49.7h795.5c27.5 0 49.7-22.3 49.7-49.7 0.1-27.5-22.2-49.7-49.6-49.7z"
+          p-id="4875"></path>
+      </svg>
+    </div>
+    <div id="nav" style="height:40px;margin-left: 50%;">
+      <div class="divfloat" style="width: 100px;height: 40px;" id="nav_shou">首页</div>
+      <div class="divfloat" style="width: 100px;height: 40px;" id="nav_order_room">房间预定</div>
+      <div class="divfloat" style="width: 100px;height: 40px;" id="nav_order_cai">点菜</div>
+      <div class="divfloat" style="width: 100px;height: 40px;" id="nav_shou">VIP服务</div>
+      <div class="divfloat" style="width: 100px;height: 40px;" id="nav_shou">信息公示</div>
+      <div class="divfloat" style="width: 100px;height: 40px;" id="nav_shou">人力资源</div>
+      <div class="divfloat" style="width: 100px;height: 40px;" id="nav_shou">联系我们</div>
+    </div>
+  </div>
+  <div id="center" style="text-align: center;border: red solid 1px;" class="card bg-light text-dark">
+    <div id="foruser"
+      style="width: 80%;margin: auto;border: solid 1px green;text-align: center;background-color:#000;background: rgba(0, 0, 0, 0.5);z-index: 0;">
+      <!-- 点菜界面 -->
+      <div id="order_cai" style="border: 1px solid red;display: none;">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+          <!-- 指示符 -->
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
+
+          <!-- 轮播图片 -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg">
+            </div>
+            <div class="carousel-item">
+              <img src="https://static.runoob.com/images/mix/img_nature_wide.jpg">
+            </div>
+            <div class="carousel-item">
+              <img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg">
+            </div>
+          </div>
+
+          <!-- 左右切换按钮 -->
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+        <div style="margin-left: 9%;height: 200px;margin-top: 100px;">
+          <div class="card" style="float: left;width: 30%;height: 200px;">
+            <div class="card-body">
+              早饭
+              <svg t="1615683398080" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="1628" width="200" height="200">
+                <path
+                  d="M737.597793 529.831724h-58.809379a15.32469 15.32469 0 0 0-15.465931 15.165793v171.784828c0 8.386207 6.920828 15.165793 15.465931 15.165793h58.809379a15.32469 15.32469 0 0 0 15.465931-15.165793v-171.784828a15.307034 15.307034 0 0 0-15.465931-15.165793z m-15.448276 171.749517h-27.912827v-43.890758h27.912827v43.890758z m0-74.27531h-27.912827V610.868966h27.912827v16.436965z m0-46.821517h-27.912827V560.198621h27.912827v20.285793z"
+                  p-id="1629"></path>
+                <path
+                  d="M369.558069 256.406069a15.024552 14.777379 0 1 0 30.049103 0 15.024552 14.777379 0 1 0-30.049103 0Z"
+                  p-id="1630"></path>
+                <path
+                  d="M444.945655 324.64331a14.088828 13.85931 0 1 0 28.177655 0 14.088828 13.85931 0 1 0-28.177655 0Z"
+                  p-id="1631"></path>
+                <path
+                  d="M516.731586 256.406069a14.088828 13.85931 0 1 0 28.177655 0 14.088828 13.85931 0 1 0-28.177655 0Z"
+                  p-id="1632"></path>
+                <path
+                  d="M582.991448 324.64331a14.106483 13.85931 0 1 0 28.212966 0 14.106483 13.85931 0 1 0-28.212966 0Z"
+                  p-id="1633"></path>
+                <path
+                  d="M864.979862 549.658483c-3.177931-25.688276-12.8-101.676138-91.61269-107.361104h-51.341241v-138.045793c34.904276-6.373517 61.581241-38.929655 61.581241-78.018207 0-43.643586-33.24469-79.165793-74.081103-79.165793H334.600828c-40.836414 0-74.045793 35.522207-74.045794 79.165793 0 39.106207 26.641655 71.662345 61.598897 78.018207v138.045793h-33.862621c-78.848 5.684966-88.470069 81.708138-91.630344 107.572966L167.90069 810.284138a15.130483 15.130483 0 0 0 3.866482 11.793655 15.518897 15.518897 0 0 0 11.493518 4.996414h41.295448v34.657103c0 8.421517 6.938483 15.201103 15.448276 15.201104h110.927448a15.342345 15.342345 0 0 0 15.448276-15.201104v-34.657103h328.933517v34.657103c0 8.421517 6.903172 15.201103 15.412966 15.201104h110.962758a15.307034 15.307034 0 0 0 15.448276-15.201104v-34.657103h41.277793a15.483586 15.483586 0 0 0 11.475862-4.996414 15.059862 15.059862 0 0 0 3.866483-11.793655l-28.777931-260.625655z m-167.97131-107.361104h-24.858483v-136.898207h24.858483v136.898207z m61.581241-216.064c0 28.619034-19.915034 52.153379-45.161931 54.377931a81.672828 81.672828 0 0 0 20.303448-54.377931 81.778759 81.778759 0 0 0-20.321103-54.377931c25.229241 2.224552 45.179586 25.741241 45.179586 54.377931z m-423.953655 54.572138h-0.03531c-27.047724 0-49.046069-24.487724-49.046069-54.572138s22.016-54.554483 49.046069-54.554482h325.067034c27.047724 0 49.063724 24.470069 49.063724 54.554482s-22.016 54.572138-49.063724 54.572138a12.393931 12.393931 0 0 0-12.482207 12.288v149.203862H347.136v-149.203862a12.393931 12.393931 0 0 0-12.499862-12.288zM335.448276 846.512552h-80.013242v-19.456H335.448276v19.456z m470.757517 0h-80.013241v-19.456h80.013241v19.456z m-605.748965-49.787586l26.853517-243.376552c7.097379-57.697103 27.489103-81.231448 70.285241-81.231448h466.432c42.796138 0 63.170207 23.534345 70.249931 81.019586l26.888828 243.588414H200.456828z"
+                  p-id="1634"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="card bg-primary text-white" style="float: left;width: 30%;height: 200px;">
+            <div class="card-body">
+              午饭
+              <svg t="1615683447148" class="icon" viewBox="0 0 1027 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="2962" width="180" height="180">
+                <path
+                  d="M506.538667 428.032c8.533333 3.413333 18.432 1.706667 24.917333-4.778667 6.485333-6.485333 8.533333-16.384 4.778667-24.917333-3.413333-8.533333-11.946667-13.994667-21.162667-13.994667-12.629333 0-22.869333 10.24-22.869333 22.869334 0.341333 9.216 5.802667 17.408 14.336 20.821333zM757.077333 717.482667H273.408c-4.778667 0-9.216 1.706667-12.629333 5.12s-5.12 7.850667-5.12 12.629333 1.706667 9.216 5.12 12.629333 7.850667 5.12 12.629333 5.12h484.010667c4.778667 0 9.216-1.706667 12.629333-5.12s5.12-7.850667 5.12-12.629333-1.706667-9.216-5.12-12.629333c-3.754667-3.072-8.192-5.12-12.970667-5.12zM515.413333 460.8c-124.245333 0-224.938667 100.693333-224.938666 224.938667h449.877333c0-124.245333-100.693333-224.938667-224.938667-224.938667z"
+                  p-id="2963" fill="#e6e6e6"></path>
+                <path
+                  d="M515.413333 0C232.448 0 3.413333 229.376 3.413333 512s229.376 512 512 512 512-229.376 512-512S798.037333 0 515.413333 0z m180.565334 267.605333c-6.485333-5.12-7.850667-14.677333-2.730667-21.504 2.389333-3.072 6.144-5.12 10.24-5.802666 4.096-0.341333 8.192 0.682667 11.264 3.072 15.701333 11.605333 25.941333 29.354667 29.013333 48.469333 0.341333 12.629333-5.802667 24.576-16.042666 32.085333-7.168 4.778667-11.605333 12.629333-12.288 21.162667 1.024 14.677333 7.509333 28.672 18.090666 38.912 5.802667 5.802667 5.802667 15.36 0 21.504-3.072 2.389333-6.826667 3.754667-10.581333 3.413333-4.096 0-7.850667-1.706667-10.581333-4.437333-16.384-16.042667-25.941333-37.888-26.965334-61.098667 1.024-17.066667 9.557333-33.109333 23.552-43.349333 4.778667-4.096 4.778667-6.826667 4.778667-7.850667-3.072-9.557333-9.216-18.432-17.749333-24.576z m-82.261334 0c-3.072-2.389333-5.12-6.144-5.802666-10.24-0.341333-4.096 0.682667-8.192 3.072-11.264 5.12-6.485333 14.677333-7.509333 21.162666-2.389333 15.701333 11.605333 26.282667 29.013333 29.013334 48.469333 0.341333 12.629333-5.802667 24.576-16.042667 32.085334-7.168 4.778667-11.946667 12.629333-12.970667 21.162666 1.024 14.677333 7.509333 28.672 18.090667 38.912 2.730667 2.730667 4.437333 6.826667 4.437333 10.581334 0 4.096-1.706667 7.850667-4.437333 10.581333-2.730667 2.389333-6.485333 3.413333-9.898667 3.413333-4.096 0-7.850667-1.706667-10.581333-4.437333-16.384-16.042667-26.282667-37.888-26.965333-61.098667 1.365333-17.066667 9.898667-32.768 23.552-43.349333 4.778667-4.096 4.778667-6.826667 4.778666-7.850667 0-7.509333-10.581333-19.114667-17.408-24.576z m-232.789333 0c-6.485333-5.12-7.850667-14.677333-2.730667-21.504 5.12-5.802667 13.653333-6.826667 19.797334-2.389333 15.701333 11.605333 26.282667 29.013333 29.013333 48.469333 0.341333 12.629333-5.12 24.576-15.36 32.085334-7.168 4.778667-11.605333 12.629333-12.288 21.162666 1.024 14.677333 7.509333 28.672 18.090667 38.912 4.437333 4.437333 5.461333 10.922667 3.413333 16.384-2.389333 5.802667-7.850667 9.216-13.994667 9.557334v-0.682667c-4.096 0-7.850667-1.706667-10.581333-4.437333-16.384-16.042667-26.282667-37.888-26.965333-61.098667 1.365333-17.066667 9.898667-32.768 23.552-43.349333 5.802667-3.413333 5.802667-6.826667 5.802666-7.850667-0.341333-8.192-10.922667-19.797333-17.749333-25.258667z m-82.944 0c-3.072-2.389333-5.12-6.144-5.802667-10.24-0.341333-4.096 0.682667-8.192 3.072-11.264 2.389333-3.072 6.144-5.12 10.24-5.802666 4.096-0.341333 7.850667 0.682667 11.264 3.072 15.701333 11.605333 26.282667 29.013333 29.013334 48.469333 0 12.629333-6.144 24.576-16.042667 32.085333-6.826667 5.12-11.605333 12.629333-12.288 21.162667 1.024 14.677333 7.509333 28.672 18.090667 38.912 2.730667 2.730667 4.437333 6.826667 4.437333 10.581333 0 4.096-1.706667 7.850667-4.437333 10.581334-3.072 2.389333-6.826667 3.754667-10.581334 3.413333-4.096 0-7.850667-1.706667-10.581333-4.437333-16.384-16.042667-26.282667-37.888-26.965333-61.098667 1.365333-17.066667 9.898667-32.768 23.552-43.349333 4.778667-4.096 4.778667-6.826667 4.778666-7.850667-3.072-9.216-9.216-18.090667-17.749333-24.234667z m459.093333 516.096H273.408c-12.970667 0-25.258667-5.12-34.474667-14.336-9.216-9.216-13.994667-21.504-13.994666-34.474666-0.341333-21.845333 13.994667-40.96 34.816-47.104v-2.048c0-102.741333 61.44-195.584 155.989333-235.52 17.408-7.168 35.498667-12.629333 53.930667-16.042667-5.12-8.192-7.509333-17.749333-7.509334-27.306667 0-29.354667 23.893333-53.248 53.248-53.248s53.248 23.893333 53.248 53.248c0 9.557333-2.730667 19.114667-7.509333 27.306667 18.432 3.413333 36.522667 8.533333 53.930667 15.701333 30.378667 12.970667 57.685333 31.402667 81.237333 54.954667 47.786667 47.786667 74.752 112.981333 74.752 180.565333v2.389334c21.162667 6.144 35.498667 25.941333 34.816 47.786666-0.341333 26.624-21.845333 48.128-48.810667 48.128z"
+                  p-id="2964" fill="#e6e6e6"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="card bg-secondary text-white" style="float: left;width: 30%;height: 200px;">
+            <div class="card-body">
+              晚饭
+              <svg t="1615683557536" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="1811" width="200" height="200">
+                <path
+                  d="M941.250207 718.618483H885.76c-2.718897-68.343172-58.420966-123.268414-127.028966-124.875035a197.261241 197.261241 0 0 0-178.793931-112.798896c-20.073931 0-39.830069 3.072-58.685793 8.915862a105.931034 105.931034 0 0 0-89.335172-43.99669c-7.944828-46.380138-21.574621-84.179862-41.542621-114.740965a17.107862 17.107862 0 0 0 2.312828-8.244966v-56.673103a58.91531 58.91531 0 0 0-58.84469-58.84469H306.846897c-0.176552-42.089931-3.636966-81.231448-9.604414-107.731862a17.655172 17.655172 0 0 0-17.231449-13.771035h-29.236965a17.655172 17.655172 0 0 0-17.231448 13.771035c-5.949793 26.465103-9.410207 65.57131-9.586759 107.731862h-26.977103a58.91531 58.91531 0 0 0-58.84469 58.84469v56.673103a17.125517 17.125517 0 0 0 2.330483 8.262621C106.496 383.152552 90.394483 455.468138 90.394483 556.720552c0 57.520552 12.852966 113.964138 29.996138 161.880276H81.478621a17.196138 17.196138 0 0 0-17.196138 17.178482c0 20.815448 45.126621 78.265379 66.983724 102.823724 34.074483 38.311724 84.073931 83.950345 128.794483 83.950345h502.589793c44.720552 0 94.72-45.638621 128.794483-83.950345 21.821793-24.576 66.966069-82.025931 66.966068-102.823724a17.160828 17.160828 0 0 0-17.160827-17.160827z m-89.864828 0h-33.544827a62.446345 62.446345 0 0 0-62.146207-57.114483 62.534621 62.534621 0 0 0-62.199173 57.114483h-14.071172v-0.512c0-14.124138-2.895448-27.595034-8.103724-39.812414 12.711724-23.410759 50.334897-50.246621 84.374069-50.246621 51.023448 0 92.883862 40.165517 95.691034 90.571035z m-68.254896 0h-54.995862a27.983448 27.983448 0 1 1 54.995862 0zM579.937103 515.336828a163.063172 163.063172 0 0 1 142.336 82.732138 131.61931 131.61931 0 0 0-31.26731 12.888275 129.659586 129.659586 0 0 0-111.06869-62.181517 129.05931 129.05931 0 0 0-97.138758 43.467035 195.230897 195.230897 0 0 0-24.240552-23.00469 163.416276 163.416276 0 0 1 121.37931-53.901241z m-2.365793 100.93462a101.199448 101.199448 0 0 0-63.841103 22.545655 197.208276 197.208276 0 0 0-9.869241-18.096551 95.073103 95.073103 0 0 1 76.076137-37.587862 95.408552 95.408552 0 0 1 83.508966 48.922482 125.581241 125.581241 0 0 0-12.958897 15.059862 101.570207 101.570207 0 0 0-72.915862-30.843586z m67.442759 101.835035l-0.017655 0.512h-134.850207l-0.017655-0.512a67.566345 67.566345 0 0 1 54.060138-66.100966 67.442759 67.442759 0 0 1 80.825379 66.100966z m-169.242483 0.512h-10.752c-2.789517-69.420138-60.080552-124.96331-130.11862-124.963311s-127.311448 55.543172-130.118621 124.963311H171.308138c2.454069-76.146759 57.396966-141.029517 132.502069-155.453793a164.581517 164.581517 0 0 1 31.073103-2.966069 162.904276 162.904276 0 0 1 153.988414 107.996689 101.552552 101.552552 0 0 0-13.117793 49.875862l0.017655 0.547311z m-140.87062-57.114483a62.49931 62.49931 0 0 0-62.163863 57.114483h-33.527172a95.973517 95.973517 0 0 1 95.70869-90.571035 95.973517 95.973517 0 0 1 95.708689 90.571035H397.064828a62.49931 62.49931 0 0 0-62.163862-57.114483z m27.506758 57.114483H307.376552a28.089379 28.089379 0 0 1 27.524414-22.739862 28.071724 28.071724 0 0 1 27.506758 22.739862z m125.722483-215.075311a197.014069 197.014069 0 0 0-58.438621 46.433104 195.901793 195.901793 0 0 0-62.817103-21.556966 71.68 71.68 0 0 1 59.197793-47.668965c4.713931-0.582621 9.569103-0.706207 14.388965-0.335448a71.785931 71.785931 0 0 1 47.668966 23.128275zM265.392552 121.202759h0.052965c3.760552 23.145931 5.949793 54.042483 6.091035 86.192551h-12.21738c0.141241-32.167724 2.312828-63.081931 6.07338-86.192551zM173.462069 266.24c0-12.976552 10.557793-23.534345 23.534345-23.534345H333.841655c12.976552 0 23.534345 10.557793 23.534345 23.534345v39.017931H173.462069v-39.017931z m3.531034 74.328276h176.851863c21.256828 28.212966 35.469241 65.112276 43.431724 112.392827a105.577931 105.577931 0 0 0-65.518345 72.951173 200.386207 200.386207 0 0 0-34.445242 3.495724c-76.217379 14.618483-135.13269 72.280276-153.970758 144.790069-10.416552-36.599172-17.655172-76.658759-17.655173-117.442207 0.03531-101.164138 16.454621-169.94869 51.305931-216.187586zM137.516138 710.408828c-0.194207 2.718897-0.512 5.455448-0.582621 8.209655H133.12l4.396138-8.209655z m724.638896 109.391448c-39.494621 43.48469-75.776 68.413793-99.504551 68.413793H260.06069c-23.728552 0-59.974621-24.929103-99.486897-68.413793-23.04-25.370483-40.977655-50.105379-51.553103-66.789517h804.705103a516.237241 516.237241 0 0 1-51.570759 66.789517z"
+                  p-id="1812"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div id="cai" style="background: white;margin-top: 100px;">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>菜名</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>操作</th>
+                <th>介绍</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>粥</td>
+                <td>2.5</td>
+                <td>
+                  <center>
+                    <input type="number" id="number" min="0" placeholder="0" class="form-control quantity-count"
+                      style="width: 60px;" />
+                  </center>
+                </td>
+                <td><button type="button" class="btn btn-secondary">预订</button></td>
+                <td><img style="width: 50px;height: 50px;" src="/WEB-INF/img/login_background.png" /></td>
+              </tr>
+              <tr>
+                <td>粥</td>
+                <td>2.5</td>
+                <td>
+                  <center>
+                    <input type="number" id="number" min="0" placeholder="0" class="form-control quantity-count"
+                      style="width: 60px;" />
+                  </center>
+                </td>
+                <td><button type="button" class="btn btn-secondary">预订</button></td>
+                <td><img style="width: 50px;height: 50px;" src="/WEB-INF/img/login_background.png" /></td>
+              </tr>
+              <tr>
+                <td>粥</td>
+                <td>2.5</td>
+                <td>
+                  <center>
+                    <input type="number" id="number" min="0" placeholder="0" class="form-control quantity-count"
+                      style="width: 60px;" />
+                  </center>
+                </td>
+                <td><button type="button" class="btn btn-secondary">预订</button></td>
+                <td><img style="width: 50px;height: 50px;" src="/WEB-INF/img/login_background.png" /></td>
+              </tr>
+              <tr>
+                <td>粥</td>
+                <td>2.5</td>
+                <td>
+                  <center>
+                    <input type="number" id="number" min="0" placeholder="0" class="form-control quantity-count"
+                      style="width: 60px;" />
+                  </center>
+                </td>
+                <td><button type="button" class="btn btn-secondary">预订</button></td>
+                <td><img style="width: 50px;height: 50px;" src="/WEB-INF/img/login_background.png" /></td>
+              </tr>
+              <tr>
+                <td>粥</td>
+                <td>2.5</td>
+                <td>
+                  <center>
+                    <input type="number" id="number" min="0" placeholder="0" class="form-control quantity-count"
+                      style="width: 60px;" />
+                  </center>
+                </td>
+                <td><button type="button" class="btn btn-secondary">预订</button></td>
+                <td><img style="width: 50px;height: 50px;" src="/WEB-INF/img/login_background.png" /></td>
+              </tr>
+              <tr>
+                <td>粥</td>
+                <td>2.5</td>
+                <td>
+                  <center>
+                    <input type="number" id="number" min="0" placeholder="0" class="form-control quantity-count"
+                      style="width: 60px;" />
+                  </center>
+                </td>
+                <td><button type="button" class="btn btn-secondary">预订</button></td>
+                <td><img style="width: 50px;height: 50px;" src="/WEB-INF/img/login_background.png" /></td>
+              </tr>
+              <tr>
+                <td>粥</td>
+                <td>2.5</td>
+                <td>
+                  <center>
+                    <input type="number" id="number" min="0" placeholder="0" class="form-control quantity-count"
+                      style="width: 60px;" />
+                  </center>
+                </td>
+                <td><button type="button" class="btn btn-secondary">预订</button></td>
+                <td><img style="width: 50px;height: 50px;" src="/WEB-INF/img/login_background.png" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 这是用户房间预定模块 分页10-->
+      <div id="order_room" style="width: 50%;border: 1px solid red;margin: auto;background: white;display: none;">
+        <!-- 显示符合条件的房子 -->
+        <div id="order_room_select" style="height:800px;display: none;">
+          <div class="card bg-primary text-white" style="height: 60px;">
+            <div class="card-body"></div>
+          </div>
+          <div style="border: 1px solid black;height: 100%;">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>房间号</th>
+                  <th>房间类型</th>
+                  <th>房间价格</th>
+                  <th>预定</th>
+                </tr>
+              </thead>
+              <tbody id="room_info">
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>Mary</td>
+                  <td>Moe</td>
+                  <td>mary@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>July</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>Mary</td>
+                  <td>Moe</td>
+                  <td>mary@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>July</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>Mary</td>
+                  <td>Moe</td>
+                  <td>mary@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>July</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                  <td><button type="button" class="btn btn-secondary">预订</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="fenye" style="text-align: center;margin-bottom: 60px;display: none;">
+          <div>
+            <ul class="pagination" style="float: right;">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </div>
+        </div>
+        <div id="room_select" style="text-align: center;display: none;">
+          <div class="card bg-primary text-white" style="height: 140px;">
+            <div class="card-body"></div>
+          </div>
+          <div style="width:60% ;margin: auto;border: red solid 1px;border-radius: 10px;">
+            <div class="card bg-dark text-white" style="height: 60px;">
+              <div class="card-body"></div>
+            </div>
+            <div id="start_final_day"
+              style="height: 300px;background-color:#000;background: rgba(0, 0, 0, 0.5);color: white;">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <h2>房间预定</h2>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>房间类型</td>
+                    <td colspan="2">
+                      <select class="form-control" id="sel1">
+                        <option name="room_type" value=1>一等房</option>
+                        <option name=" room_type" value=2>二等房</option>
+                        <option name="room_type" value=3>三等房</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>入住时间</td>
+                    <td>至</td>
+                    <td>退房时间</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">
+                      <button id="select_room" type="button" class="btn btn-primary" style="width: 100%;">查找</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div style="height: 200px;"></div>
+        </div>
+
+
+
+      </div>
+      <!-- 这是酒店首页内容 -->
+      <div id="first_view" style="height: 1000px; z-index: 500;display: block;">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+          <!-- 指示符 -->
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
+          <!-- 轮播图片 -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg">
+            </div>
+            <div class="carousel-item">
+              <img src="https://static.runoob.com/images/mix/img_nature_wide.jpg">
+            </div>
+            <div class="carousel-item">
+              <img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg">
+            </div>
+          </div>
+          <!-- 左右切换按钮 -->
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+
+        <div style="border: solid 1px red;margin-top: 60px;">
+          <div class="divfloat" style="width: 30%;height: 500px;"></div>
+          <div class="divfloat" style="width: 30%;height: 500px;"></div>
+          <div class="divfloat" style="width: 40%;height: 500px;"></div>
+        </div>
+      </div>
+
+      <div id="forcompany" style="height: 250px;border: 1px solid red;width: 80%;margin: auto;"
+        class="card bg-info text-white">
+        <div class="divfloat" style="width:40%;height: 100%;">
+          <div style="border:solid 1px red;width: 30%;margin-left: 10px;">
+            <span style="color:black;font-size: 30px;margin-left: 0;">NEWS</span>
+            <span style="color: white;">新闻中心</span>
+          </div>
+        </div>
+      </div>
+      <div class="divfloat" style="width:30%;height: 100%;"></div>
+      <div class="divfloat" style="width:30%;height: 100%;"></div>
+    </div>
+  </div>
+  <div class="jumbotron text-center card bg-secondary text-white" style="margin-bottom:0; height: 100px">
+    <p>底部内容</p>
+  </div>
+
+</body>
+
+</html>

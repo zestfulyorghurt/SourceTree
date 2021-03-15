@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap 实例 - 折叠面板</title>
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+</head>
+
+<body>
+
+  <div style="height: 100px;" class="panel-primary">
+    <div class="card bg-secondary text-white" style="height: 100px;">
+      <div class="card-body">Zestful Yoghurt 酒店后台</div>
+    </div>
+  </div>
+
+
+  <div class="container"
+    style="margin-left: 0%; width:20%; height: 700px;background:	#D3D3D3; border-radius: 10px;float: left;">
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header">
+          <a class="card-link" data-toggle="collapse" href="#collapseOne">
+            用户管理
+          </a>
+        </div>
+        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">添加用户信息</a>
+            <a href="#" class="list-group-item list-group-item-action">删除用户信息</a>
+            <a href="#" class="list-group-item list-group-item-action">用户用户信息</a>
+            <a href="#" class="list-group-item list-group-item-action">查找用户信息</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+            房间管理
+          </a>
+        </div>
+        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">添加房间信息</a>
+            <a href="#" class="list-group-item list-group-item-action">删除房间信息</a>
+            <a href="#" class="list-group-item list-group-item-action">修改房间信息</a>
+            <a href="#" class="list-group-item list-group-item-action">查找房间信息</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+            美食管理
+          </a>
+        </div>
+        <div id="collapseThree" class="collapse" data-parent="#accordion">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">添加新菜品</a>
+            <a href="#" class="list-group-item list-group-item-action">删除旧菜品</a>
+            <a href="#" class="list-group-item list-group-item-action">菜品一览</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link" data-toggle="collapse" href="#collapseLast">
+            账户管理
+          </a>
+        </div>
+        <div id="collapseLast" class="collapse" data-parent="#accordion">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">信息修改</a>
+            <a href="#" class="list-group-item list-group-item-action">注销用户</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右边主体部分 -->
+  <div class="container" style="width: 100%;height: 850px;border: 1px solid black;float: left;">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+
+      // 指定图表的配置项和数据
+      var option = {
+        title: {
+          text: '房间的基本信息图'
+        },
+        tooltip: {},
+        legend: {
+          data: ['数量']
+        },
+        xAxis: {
+          data: ["衬衫", "张意", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+        },
+        yAxis: {},
+        series: [{
+          name: '数量',
+          type: 'bar',
+          data: [5, 20, 36, 10, 10, 20]
+        }]
+      };
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+
+    <div style="height: 300px; overflow: auto">
+      <div class="container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>管理员姓名</th>
+              <th>管理员邮箱</th>
+              <th>管理员电话</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

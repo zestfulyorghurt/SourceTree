@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bootstrap 模板</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/viewroot.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- 引入 echarts.js -->
+  <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+  <script src="../js/viewroot.js"></script>
+  <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+  <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+  <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+</head>
+
+<body>
+  <div>
+    <!--网站标题-->
+    <div class="card bg-info text-white" style="height: 80px;border-radius: 5px;">
+      <div class="card-body">
+        <h4>Zestful Youghurt</h4>
+      </div>
+    </div>
+
+
+    <div style="border: red solid 1px;width: 100%;margin: 0 auto;">
+      <!-- 左侧的菜单栏 -->
+      <div id="leftDiv">
+        <div id="accordion">
+          <div class="card bg-info text-white">
+            <div class="card-body"></div>
+          </div>
+          <div class="card">
+            <div class="card-header" data-toggle="collapse" href="#">
+              <a id="yilan" class="card-link" data-toggle="collapse" href="#">
+                全局信息一览
+              </a>
+            </div>
+
+          </div>
+
+          <div class="card">
+            <div class="card-header" data-toggle="collapse" href="#collapseOne">
+              <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                房间管理
+              </a>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+              <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <th id="fangjian_yilan">房间一览</th>
+                  </tr>
+                  <tr>
+                    <th id="tianjia_fangjian">添加房间</th>
+                  </tr>
+                  <tr>
+                    <th id="kai_fang">开房</th>
+                  </tr>
+                  <tr>
+                    <th id="tui_fang">退房</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" data-toggle="collapse" href="#collapseTwo">
+              <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                用户管理
+              </a>
+            </div>
+            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+              <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <th id="yh_yilan">用户一览</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" data-toggle="collapse" href="#collapseThree">
+              <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                菜品管理
+              </a>
+            </div>
+            <div id="collapseThree" class="collapse" data-parent="#accordion">
+              <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <th id="caipin_yilan">菜品一览</th>
+                  </tr>
+                  <tr>
+                    <th id="tianjia_caipin">添加菜品</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" data-toggle="collapse" href="#collapseFour">
+              <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
+                员工管理
+              </a>
+            </div>
+            <div id="collapseFour" class="collapse" data-parent="#accordion">
+              <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <th id="yg_yilan">员工一览</th>
+                  </tr>
+                  <tr>
+                    <th id="xyg_luru">新员工录入</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--右侧的操作栏-->
+      <div id="rightDiv">
+        <div id="card_right" class="card bg-info text-white">
+          <div class="card-body"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script>
+    $(function () {
+      $("[data-toggle='popover']").popover();
+    });
+
+  </script>
+</body>
+
+</html>

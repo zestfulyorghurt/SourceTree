@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--注入安全管理器-->
+    <bean  id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+
+        <property name="realm" ref="loginRealm"></property>
+    </bean>
+
+
+    <!--配置授权属性-->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+
+    <!--配置shiro过滤器链-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!--未认证时跳转-->
+        <property name="loginUrl" value="/login"/>
+        <!--配置放行规则-->
+        <property name="filterChainDefinitions">
+            <value>
+                /resources/** = anon
+                /regist = anon
+                /json = anon
+                /test = anon
+            </value>
+        </property>
+    </bean>
+
+</beans>

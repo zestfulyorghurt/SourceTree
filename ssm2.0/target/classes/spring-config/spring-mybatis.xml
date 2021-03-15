@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--加载properties配置文件-->
+    <context:property-placeholder location="classpath:properties/db.mysql.properties"/>
+
+    <!--将数据源交给spring容器管理-->
+    <bean id="Datasource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${db.driven}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+    <!--通过sqlSessionFactory创建Session-->
+    <bean id="Factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="Datasource"/>
+        <!--加载mybatis的全局配置文件-->
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+        <!--扫描的包使用别名-->
+        <property name="typeAliasesPackage" value="zy.pojo"/>
+        <!--扫描包下的mapper.xml映射文件-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!--配置扫描Dao接口，动态的将接口注入到容器中-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入sqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="Factory"/>
+        <!--指定要扫描的包-->
+        <property name="basePackage" value="zy.dao"/>
+    </bean>
+
+</beans>

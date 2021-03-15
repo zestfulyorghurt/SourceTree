@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bootstrap 模板</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+  <script>
+    //原生js实现ajax
+    var Ajax = {
+      get: function (url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, false);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200 || xhr.status == 304) {
+              console.log(xhr.responseText)
+              callback(xhr.responseText);
+            }
+          }
+        }
+        xhr.send();
+      },
+      post: function (url, data, callback) {
+        var xhr = new XMLHttpRequest()
+        xhr.open('POST', url, false)
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200 || xhr.status == 304) {
+              console.log(xhr.responseText)
+              callback(xhr.response)
+            }
+          }
+        }
+        xhr.send(data)
+      }
+
+    }
+
+
+
+    $(function () {
+      $("#sub_but").click(function () {
+        // var username = $("#usr").val()
+        // var password = $("#password").val()
+        console.log(222)
+        //请求参数
+        //var list = { "22": "55" };
+
+
+        //
+        $.ajax({
+          //请求方式
+          type: "POST",
+          //请求的媒体类型
+          contentType: "application/json;charset=UTF-8",
+          //请求地址
+          url: "/login",
+          //数据，json字符串
+          data: JSON.stringify({ "username": "zhangyi", "password": "yjua5733" }),
+          //请求成功
+          success: function (data) {
+            if (data.username != null) {
+              window.sessionStorage.setItem("username", data.username)
+              window.sessionStorage.setItem("role", data.role)
+              console.log(data.url)
+              window.location.href = data.url
+            }
+            console.log(data)
+          },
+          //请求失败，包含具体的错误信息
+        })
+      });
+      // var username = '<%= session.getAttribute("loginerror")%>';
+      // console.log("username:::" + username);
+      var loginorregister = true
+      $("#login_but").click(function () {
+        if (loginorregister == false) {
+          $("#logo").text("login");
+          $("#login").slideToggle("slow")
+          $("#register").slideToggle("slow")
+          $("#register").css("display", "none")
+          $("#login_but").css("background-color", "rgb(241,241,241)")
+          $("#register_but").css("background-color", "white")
+          loginorregister = true
+        }
+      })
+      $("#register_but").click(function () {
+        if (loginorregister == true) {
+          $("#logo").text("registe");
+          $("#login").slideToggle("slow")
+          $("#register").slideToggle("slow")
+          $("#login").css("display", "none")
+          $("#register_but").css("background-color", "rgb(241,241,241)")
+          $("#login_but").css("background-color", "white")
+          loginorregister = false
+        }
+      })
+      //鼠标悬停事件
+      // $("#login_but").hover(function () {
+      //   console.log("进入")
+      //   $("#login_but").css("background-color", "red")
+      // }, function () {
+      //   console.log("离开")
+      //   $("#login_but").css("background-color", "white")
+      // });
+    })
+  </script>
+</head>
+
+<body style="background: rgb(27,159,221);">
+
+  <div id="app" style="text-align: center;">
+    <!--网站标题-->
+    <div class="card bg-info text-white" style="height: 80px;border-radius: 5px;background: rgb(77,163,255);">
+      <div class="card-body" style="background: rgb(77,163,255);">
+        <h4>Zestful Youghurt Hotel</h4>
+      </div>
+    </div>
+    <br><br><br>
+    <br>
+    <div
+      style="border: 2px solid rgb(241,241,241);width: 400px;text-align: center;margin: auto;background:white;border-radius: 5px;">
+      <div style="height: 20px;background:rgb(77,163,255);"></div>
+      <div style="height: 60px;">
+        <h3 id="logo" style="cursor: default;">login</h3>
+      </div>
+      <div style="width: 100%;height: 40px;">
+        <div id="login_but"
+          style="float: left;text-align: center; width: 49%;height: 40px;background: rgb(241,241,241);">
+          <span style="cursor: default;">登录</span>
+        </div>
+        <div id="register_but" style="float: left;text-align: center;width: 50%;height: 40px;">
+          <span style="cursor: default;">注册</span>
+        </div>
+      </div>
+      <div style="width:90%;margin:auto; position: relative;" id="login">
+        <form style="margin-top: 40px;" action="/login" method="POST" id="login">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <svg t="1614501149733" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="2127" width="35" height="35">
+                <path
+                  d="M512 128a160 160 0 1 1-160 160A160 160 0 0 1 512 128m0-64a224 224 0 1 0 224 224A224 224 0 0 0 512 64zM704 640a128 128 0 0 1 0 256H320a128 128 0 0 1 0-256h384m0-64H320a192 192 0 0 0 0 384h384a192 192 0 0 0 0-384z"
+                  p-id="2128" fill="#8a8a8a">
+                </path>
+              </svg>
+            </div>
+            <input style="background-color: rgb(235,235,235);" type="text" class="form-control" placeholder="用户名"
+              required="required" id="usr" name="username">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <svg t="1614501433588" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="1137" width="35" height="35">
+                <path
+                  d="M759.4 445.4c37 0 67.1 30 67.1 67.1v313.1c0 37.1-30 67.1-67.1 67.1H267.5c-37.1 0-67.1-30-67.1-67.1V512.5c0-37 30-67.1 67.1-67.1h491.9m0-67.1H267.5c-74.1 0-134.2 60.1-134.2 134.2v313.1c0 74.1 60.1 134.1 134.2 134.1h491.9c74.1 0 134.2-60.1 134.2-134.1V512.5c0-74.1-60-134.2-134.2-134.2zM513.5 132.4c86.4 0 156.5 70.1 156.5 156.5v89.5H357v-89.5c0-86.4 70.1-156.5 156.5-156.5m0-67.1c-123.5 0-223.6 100.1-223.6 223.6v156.5h447.2V288.9c0-123.5-100.1-223.6-223.6-223.6z m0 704.4c-18.5 0-33.5-15-33.5-33.5V602c0-18.5 15-33.5 33.5-33.5s33.5 15 33.5 33.5v134.2c0 18.4-15 33.5-33.5 33.5z"
+                  fill="#8a8a8a" p-id="1138">
+                </path>
+              </svg>
+            </div>
+            <input style="background-color: rgb(235,235,235);" type="password" class="form-control" placeholder="密码"
+              required="required" id="password" name="password">
+          </div>
+          <button id="sub_but" type="button" class="btn btn-primary" style="width: 100%;">登录</button>
+        </form>
+        <div><a href="" style="float: right;">忘记密码</a></div>
+        <div style="background-color: aliceblue;">
+          <div style="margin-left: 20%;">@Made By ZestfulYoghurt</div>
+        </div>
+        <div style="height: 30px;"></div>
+      </div>
+      <div style="width:90%;margin:auto; position: relative;display: none;" id="register">
+        <form style="margin-top: 40px;" action="/regist" method="POST" id="regist">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <svg t="1614501149733" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="2127" width="35" height="35">
+                <path
+                  d="M512 128a160 160 0 1 1-160 160A160 160 0 0 1 512 128m0-64a224 224 0 1 0 224 224A224 224 0 0 0 512 64zM704 640a128 128 0 0 1 0 256H320a128 128 0 0 1 0-256h384m0-64H320a192 192 0 0 0 0 384h384a192 192 0 0 0 0-384z"
+                  p-id="2128" fill="#8a8a8a">
+                </path>
+              </svg>
+            </div>
+            <input style="background-color: rgb(235,235,235);" type="text" class="form-control" placeholder="用户名"
+              required="required" id="usr" name="username">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <svg t="1614501433588" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="1137" width="35" height="35">
+                <path
+                  d="M759.4 445.4c37 0 67.1 30 67.1 67.1v313.1c0 37.1-30 67.1-67.1 67.1H267.5c-37.1 0-67.1-30-67.1-67.1V512.5c0-37 30-67.1 67.1-67.1h491.9m0-67.1H267.5c-74.1 0-134.2 60.1-134.2 134.2v313.1c0 74.1 60.1 134.1 134.2 134.1h491.9c74.1 0 134.2-60.1 134.2-134.1V512.5c0-74.1-60-134.2-134.2-134.2zM513.5 132.4c86.4 0 156.5 70.1 156.5 156.5v89.5H357v-89.5c0-86.4 70.1-156.5 156.5-156.5m0-67.1c-123.5 0-223.6 100.1-223.6 223.6v156.5h447.2V288.9c0-123.5-100.1-223.6-223.6-223.6z m0 704.4c-18.5 0-33.5-15-33.5-33.5V602c0-18.5 15-33.5 33.5-33.5s33.5 15 33.5 33.5v134.2c0 18.4-15 33.5-33.5 33.5z"
+                  fill="#8a8a8a" p-id="1138">
+                </path>
+              </svg>
+            </div>
+            <input style="background-color: rgb(235,235,235);" type="password" class="form-control" placeholder="密码"
+              required="required" id="password" name="password">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <svg t="1614504233410" class="icon" viewBox="0 0 1303 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="2355" width="35" height="35">
+                <path
+                  d="M1293.963636 157.975273c-6.702545-35.188364-27.554909-56.32-62.464-61.905455-0.744727 0-1.396364-0.744727-2.048-0.744727-0.651636 0-1.303273-0.651636-2.048-0.651636l-1.303272-0.744728H119.808c-16.756364 0-32.209455 2.141091-47.010909 6.330182L70.749091 101.003636A101.469091 101.469091 0 0 0 0.930909 197.352727v690.548364c0 27.461818 8.750545 54.923636 24.855273 76.706909 1.396364 2.141091 3.351273 4.282182 5.399273 7.074909l0.651636 0.744727 1.396364 1.396364c25.506909 28.858182 62.464 45.707636 101.46909 45.707636h1049.134546c53.061818 0 99.514182-37.981091 110.219636-90.112l0.744728-2.048v-0.744727c1.303273-7.726545 2.699636-15.453091 2.699636-22.528V177.803636c-1.396364-5.585455-2.048-11.915636-3.444364-19.735272zM423.842909 549.422545L297.425455 668.392727c-72.610909 68.235636-145.221818 135.912727-217.925819 204.8V256l344.343273 293.515636z m452.514909-1.396363c114.315636-97.186909 227.328-193.629091 341.643637-290.722909v604.625454l-143.26691-131.630545-198.283636-182.272zM332.334545 742.865455l151.365819-141.498182c25.506909 21.876364 50.362182 43.008 75.310545 64.139636 14.056727 11.915636 28.206545 23.924364 41.704727 35.84l18.152728 15.546182c19.549091 16.849455 37.608727 16.849455 57.716363 0 45.800727-38.725818 91.508364-78.196364 138.612364-117.573818l83.409454 76.706909c95.511273 87.970909 190.277818 175.290182 286.440728 263.261091H123.810909c70.004364-66.094545 139.264-130.885818 208.523636-196.421818z m316.043637-105.565091a135272.448 135272.448 0 0 1-354.397091-302.731637l-186.181818-159.092363C189.067636 172.776727 545.512727 170.728727 847.406545 170.728727c175.476364 0 297.890909 0.651636 346.949819 2.048L648.378182 637.393455z"
+                  fill="#8a8a8a" p-id="2356">
+                </path>
+              </svg>
+            </div>
+            <input style="background-color: rgb(235,235,235);" type="email" class="form-control" placeholder="邮箱"
+              required="required" id="email" name="email">
+          </div>
+          <div><svg style="float: left;" t="1614504303876" class="icon" viewBox="0 0 1024 1024" version="1.1"
+              xmlns="http://www.w3.org/2000/svg" p-id="3267" width="35" height="35">
+              <path
+                d="M416 221.6C416 152.9 360.1 97 291.4 97s-124.6 55.9-124.6 124.6 55.9 124.6 124.6 124.6S416 290.4 416 221.6z"
+                p-id="3268" fill="#8a8a8a"></path>
+              <path
+                d="M227 356.4c-90.4 28.7-149.5 116-149.5 210.9v150.4c0 7.4 6 13.4 13.4 13.4h72.3v181.7c0 6.2 5 11.2 11.2 11.2h234.8c6.2 0 11.2-5 11.2-11.2V731.1h55.8c16.5 0 29.9-13.5 29.9-29.9V554c0.1-135.9-140.3-241.7-279.1-197.6z m646-93.2c0-68.7-55.9-124.6-124.6-124.6-68.7 0-124.6 55.9-124.6 124.6s55.9 124.6 124.6 124.6c68.7 0 124.6-55.9 124.6-124.6z m74 488.4l-63-247.4c-13.7-67.4-74-116.4-143.5-116.4s-129.8 49-143 114.1L534 751.6c-3.1 12.3-0.4 25.2 7.3 35.3 7.7 10.1 19.5 16 32.1 16.3 0 0 30.9 0.6 55.3 0.8 7.9 23.5 19.6 58.2 30.2 91.8 5.3 16.9 21 28.3 38.7 28.3h85.9c17.5 0 33.1-11.3 38.4-28.1 10.6-33.7 22.4-69.3 30.3-92.9 24.4-0.1 55.3-0.3 55.3-0.3 12.6-0.3 24.5-6 32.1-16.1 7.8-10.1 10.5-22.8 7.4-35.1z"
+                p-id="3269" fill="#8a8a8a">
+              </path>
+            </svg>
+            <select style="float: left;width: 90%;" class="form-control" id="sel1" name="sex">
+              <option value="0">男</option>
+              <option value="1">女</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">注册</button>
+        </form>
+
+        <div style="text-align: center;background-color: aliceblue;">@Made By ZestfulYoghurt</div>
+        <div style="height: 30px;"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
